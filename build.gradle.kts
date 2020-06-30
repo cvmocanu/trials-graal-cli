@@ -1,3 +1,5 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.3.72"
     kotlin("kapt") version "1.3.72"
@@ -30,6 +32,10 @@ graal {
     mainClass(mainClassName)
     outputName("trials-graal-cli")
     option("--no-server")
-    option("--static")
     option("--no-fallback")
+
+    if (!Os.isFamily(Os.FAMILY_MAC)) {
+        // using this under Map produces an error: "DARWIN does not support building static executable images"
+        option("--static")
+    }
 }
