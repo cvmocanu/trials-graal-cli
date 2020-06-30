@@ -1,0 +1,3 @@
+= trials-graal-cli
+
+This repository shows how to build a native binary command line application from Kotlin sources, using GraalVM native-image.
