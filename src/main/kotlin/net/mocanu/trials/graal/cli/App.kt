@@ -5,7 +5,7 @@ import java.util.concurrent.Callable
 import kotlin.system.exitProcess
 
 @CommandLine.Command(
-        name = "mycli",
+        name = "trials-graal-cli",
         description = ["Says hello"],
         version = ["hello 0.1.0"],
         mixinStandardHelpOptions = true

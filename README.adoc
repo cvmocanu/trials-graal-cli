@@ -29,7 +29,7 @@ You can find the result at `./build/graal/trials-graal-cli`.
 [source, shell script]
 ----
 $ time ./build/graal/trials-graal-cli --help
-Usage: mycli [-hV]
+Usage: trials-graal-cli [-hV]
 Says hello
   -h, --help      Show this help message and exit.
   -V, --version   Print version information and exit.
