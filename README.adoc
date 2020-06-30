@@ -1,3 +1,39 @@
 = trials-graal-cli
 
+== Intro
+
 This repository shows how to build a native binary command line application from Kotlin sources, using GraalVM native-image.
+
+The native binary is statically linked (no dynamic dependencies needed).
+
+== Build
+
+1. Make sure you have OpenJDK 11 in the PATH (for Gradle to use).
+2. Make sure you have the native build tools installed (more information on the link:https://www.graalvm.org/docs/reference-manual/native-image/[Native Image] page, the "Prerequisite" section:
+* for Linux and Mac, `glibc-devel`, `zlib-devel`, and `gcc` are required. In addition, for Linux, `libstdc++` is also required.
+** on Ubuntu, `sudo apt install -y build-essential` should be enough (not tested)
+** on Mac, `xcode-select --install` should be enough
+* for Windows, you need the link:https://aka.ms/vs/15/release/vs_buildtools.exe[Visual Studio 2017 Visual C++ Build Tools]
+
+3. open a terminal and run:
+
+[source, shell script]
+----
+./gradlew nativeImage
+----
+
+== Test the binary
+
+You can find the result at `./build/graal/trials-graal-cli`.
+
+[source, shell script]
+----
+$ time ./build/graal/trials-graal-cli --help
+Usage: mycli [-hV]
+Says hello
+  -h, --help      Show this help message and exit.
+  -V, --version   Print version information and exit.
+./build/graal/trials-graal-cli --help  0,00s user 0,01s system 94% cpu 0,006 total
+----
+
+Note that the binary took a total of 6 milliseconds to execute. No more waiting for the JVM to startup! 👍
