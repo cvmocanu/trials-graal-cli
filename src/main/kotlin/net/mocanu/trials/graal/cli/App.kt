@@ -7,7 +7,7 @@ import kotlin.system.exitProcess
 @CommandLine.Command(
         name = "trials-graal-cli",
         description = ["Says hello"],
-        version = ["hello 0.1.0"],
+        version = ["trials-graal-cli 0.1.0"],
         mixinStandardHelpOptions = true
 )
 class App : Callable<Int> {
